@@ -56,12 +56,12 @@ def form_example_phrase(example): ## only needed because the bs4 object return s
     return phrase
 
 def filter_unwanted_phrases(examples): ## if the phrase is located, it's prefered for now to discart the example
-    unwanted = ['See alternative translations', 'Examples']
+    unwanted = 'See alternative translations'
 
     cpy_examples = examples.copy()
-    for index, example in enumerate(examples): 
-        if example in unwanted:
-            cpy_examples.pop(index)
+    for index, example in enumerate(examples):
+        if unwanted in example:
+            cpy_examples.remove(example)
 
     return cpy_examples
     
