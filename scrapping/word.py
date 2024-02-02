@@ -1,25 +1,22 @@
+import json
+
 class Word():
-     def __init__(self, english):
-        self.english = english
-        self.french = None
+     def __init__(self, french):
+        self.english = None
+        self.french = french
         self.examples = None
         self.plus_rare = None # Palavras menos usuais
     
      def to_dict(self):
-        string1 = ""
-        for definition in self.french:
-            string1 += definition[0] + ','
-        
-        string2 = ""
-        for example in self.examples:
-            string2 += example[0] + ','
-        
-
         return {
              'english' : self.english,
-             'french' : string1,
-             'examples' : string2
+             'french' : self.french,
+             'examples' : self.examples
         }
+     
+     def dump(self):
+        transform = self.to_dict()
+        return json.dumps(transform, sort_keys= True, ensure_ascii= False)
 
 
 

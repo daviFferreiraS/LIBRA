@@ -2,6 +2,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from urllib.error import HTTPError, URLError
 from nltk.tokenize import sent_tokenize, WhitespaceTokenizer
+from unidecode import unidecode
 
 def get_bs4_for_word(word):
     '''
@@ -10,6 +11,7 @@ def get_bs4_for_word(word):
     try:
         if ' ' in word:
             word.replace(' ', '+')
+        word = unidecode(word)
         
         url = urlopen(f"https://www.linguee.com/french-english/translation/{word}.html")
         bs = BeautifulSoup(url.read(), 'lxml')
