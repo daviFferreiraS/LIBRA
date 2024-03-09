@@ -18,8 +18,6 @@ def get_bs4_for_word(word):
         return bs
     except URLError:
         print("It was not possible to open the URL for determined word. Try checking any typos")
-    except HTTPError:
-        print("It was not possible to process the website (used 'lxml') ")
 
 def get_direct_translations(bs):
     direct_translation = bs.find_all('h3', {'class':'translation_desc'})

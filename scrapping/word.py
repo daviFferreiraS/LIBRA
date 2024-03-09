@@ -16,12 +16,4 @@ class Word():
      
      def dump(self):
         transform = self.to_dict()
-        return json.dumps(transform, sort_keys= True, ensure_ascii= False)
-
-
-
-# salvar as informações em um arq JSON, JSONline (ideal, dá pra fazer na mão, mas tem um pacote tbm),
-# csv
-# pegar as palavras de um sample da wikipedia
-    # fazer um downsampling
-    # buscar todas essas palavras do downsampling no linguee
+        return json.dumps(transform, sort_keys= True, ensure_ascii= True, indent=2)
