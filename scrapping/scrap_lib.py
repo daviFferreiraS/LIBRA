@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+from urllib import parse
 from bs4 import BeautifulSoup
 from urllib.error import HTTPError, URLError
 from nltk.tokenize import sent_tokenize, WhitespaceTokenizer
@@ -11,9 +12,9 @@ def get_bs4_for_word(word):
     try:
         if ' ' in word:
             word.replace(' ', '+')
-        word = unidecode(word)
-        
-        url = urlopen(f"https://www.linguee.com/french-english/translation/{word}.html")
+        word = parse.quote(word)
+        url_to_search = f"https://www.linguee.com/french-english/translation/{word}.html" 
+        url = urlopen(url_to_search)
         bs = BeautifulSoup(url.read(), 'lxml')
         return bs
     except URLError:
